@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="">
+    <div>1. JavaScript: 字串反轉</div>
+    <div id="js-1" style="padding-top: 20px">JavaScript: 字串反轉</div>
+
+    <div style="padding-top: 20px">2. JavaScript: 陣列過濾</div>
+    <div>問題：寫一個 JavaScript 函式，接受一個數字陣列，並返回該陣列中所有大於 5 的數字。</div>
+    <div style="padding-top: 20px">答:</div>
+    <div id="js-2"></div>
+
+    <div style="padding-top: 20px">3. JavaScript: 重構</div>
+    <div>問題：重構這段程式碼並說明原因</div>
+    <div style="padding-top: 20px">答:</div>
+    <div>
+        function formatName(firstName, lastName) {
+        return `${firstName ? firstName : ''} ${lastName ? lastName : ''}`.trim();
+        }
+    </div>
+    <div>利用三元運算子來檢查 firstName 和 lastName 是否存在，然後動態地建構格式化的名字部分</div>
+
+    <div style="padding-top: 20px">4. React: 條件渲染</div>
+    <div id="js-4"></div>
+
+    <div style="padding-top: 20px">5. React: 組件</div>
+    <div>問題：使用React創建一個簡單的計數器組件，具有增加和減少計數的按鈕。</div>
+    <div id="js-5"></div>
+
+
+
+</div>
+
+<script>
+    // JavaScript: 字串反轉
+
+    function reverseString(str) {
+        return str.split("").reverse().join("");
+    }
+    aa = document.getElementById('js-1');
+    bb = aa.innerText;
+    cc = reverseString(bb);
+
+    aa.innerText = cc;
+
+    // JavaScript: Array Filtering
+    function filterNumbersGreaterThanFive(numbers) {
+        let filteredResult = numbers.filter(function (number) {
+            return number > 5;
+        });
+        return filteredResult;
+    }
+
+    const numbersArray = [2, 8, 4, 10, 1, 7];
+    let resultElement = document.getElementById('js-2');
+    resultElement.innerText = filterNumbersGreaterThanFive(numbersArray).toString();
+</script>
+
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+<script type="text/babel">
+    // React: 條件渲染
+
+    function SimpleConditionalRendering({ condition }) {
+        return (
+            <div>
+                {condition && <p>條件為真，顯示這段文字。</p>}
+                {!condition && <p>條件為假，顯示這段文字。</p>}
+            </div>
+        );
+    }
+
+    const rootElement = document.getElementById('js-4');
+    ReactDOM.render(<SimpleConditionalRendering condition={true} />, rootElement);
+</script>
+
+<script type="text/babel">
+    // React: 計數器組件
+
+    function Counter() {
+        const [count, setCount] = React.useState(0);
+
+        const increaseCount = () => {
+            setCount(count + 1);
+        };
+
+        const decreaseCount = () => {
+            setCount(count - 1);
+        };
+
+        return (
+            <div>
+                <h2>計數器</h2>
+                <p>當前計數: {count}</p>
+                <button onClick={increaseCount}>增加</button>
+                <button onClick={decreaseCount}>減少</button>
+            </div>
+        );
+    }
+
+    const counterRootElement = document.getElementById('js-5');
+    ReactDOM.render(<Counter />, counterRootElement);
+</script>
+
+</body>
+</html>
